@@ -1,23 +1,39 @@
- <template id="todo-list">
-		<div>
-			<add-todo></add-todo>
-			<ul class="tasks">
-				<li v-for="todo in todos"
-					:class="{completed: todo.completed}"
-					class="task"
-					@click="toggleTodo(todo.id)"
-					@dblclick="deleteTodo(todo.id) " :key="todo.id">{{todo.task}}</li>
-			</ul>
-		</div>
+<template>
+  <v-layout row>
+    <v-flex xs12>
+      <v-card>
+        <v-toolbar>
+          <v-toolbar-title class="teal--text">Task List</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-spacer></v-spacer>
+			<v-btn flat color="blue" to="add-todo">Add Task</v-btn>
+		
+        </v-toolbar>
+        <v-list two-line>
+          <template v-for="(todo, index) in todos">
+            <v-list-tile :key="index" avatar ripple @click="">
+              <v-list-tile-content>
+                <v-list-tile-title>{{ todo.title }}</v-list-tile-title>
+                <v-list-tile-sub-title class="text--primary">{{ todo.subtitle }}</v-list-tile-sub-title>
+                <v-list-tile-sub-title>{{ todo.task }}</v-list-tile-sub-title>
+              </v-list-tile-content>
+              <v-list-tile-action>
+                <v-list-tile-action-text>{{ todo.action }}</v-list-tile-action-text>
+                <v-icon color="grey lighten-1">star_border</v-icon>
+              </v-list-tile-action>
+            </v-list-tile>
+            <v-divider v-if="index + 1 < todos.length" :key="`divider-${index}`"></v-divider>
+          </template>
+        </v-list>
+      </v-card>
+    </v-flex>
+  </v-layout>
 </template>
 <script>
 import { mapState, mapActions } from 'vuex'
-import AddTodo from './AddTodo.vue';
 export default {
-	
-	components: {
-		AddTodo
-	},
+	flat: true,
+	hover: true,	
 	computed : {
 		...mapState(['todos']),
 		
@@ -29,48 +45,3 @@ export default {
 
 }
 </script>
-<style>
-    .tasks {
-        width: 24rem;
-        margin: auto;
-        background-color: white;
-        border-radius: 0.5rem;
-        padding: 1rem;
-        box-shadow: 0 0 2rem rgba(0, 0, 0, 0.25);
-    }
-    h1 {
-        text-align: center;
-        margin-top: 0;
-    }
-	.add-form {
-		text-align: center;
-	}
-    .todo-input {
-        width: 24rem;
-        padding: 0.5rem;
-        font-size: 1rem;
-        outline: none;
-        border-radius: 0.25rem;
-        border-style: none;
-        border: solid 1px lightgray;
-        box-sizing: border-box;
-    }
-    .tasks {
-        padding-left: 1.5rem;
-    }
-    .task {
-        margin-bottom: 0.5rem;
-    }
-    .task:hover {
-        cursor: pointer;
-    }
-    .completed {
-        text-decoration: line-through;
-        color: #555;
-    }
-	body {
-		background-color: #21D4FD;
-		background-image: linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);
-
-	}
-</style>

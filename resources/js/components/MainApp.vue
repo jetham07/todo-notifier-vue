@@ -1,15 +1,24 @@
 <template>
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card card-default">
-                    <div class="card-header">Welcome to TODO-Notifier</div>
-
-                    <div class="card-body">
-                     Notify your todo`s Push Notification
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+  <v-layout  row>
+     <v-flex sm6 offset-sm3> 
+		<v-card>
+			<v-card-title primary-title>
+			<div>
+				<div class="headline font-weight-bold teal--text">Todo-Notifier</div>
+				<h4>Set time and it will notify your todo`s right away. Try it now!</h4>
+			</div>
+			</v-card-title>
+			<v-card-actions>
+			<v-btn flat  to="/todo"  class="deep-purple white--text">Click Me</v-btn>
+			</v-card-actions>
+		</v-card>
+	</v-flex>
+	
+  </v-layout>
+  
 </template>
+<script>
+export default {
+
+}
+</script>

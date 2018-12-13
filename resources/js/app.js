@@ -1,12 +1,15 @@
 
 import router from './route';
 import  store  from './store';
+import Vuetify from 'vuetify';
 
 require('./bootstrap');
 
 window.Vue = require('vue');
 
-const app = new Vue({
+Vue.use(Vuetify);
+
+export default new Vue({
 	
 	el: '#app',
 	router,
