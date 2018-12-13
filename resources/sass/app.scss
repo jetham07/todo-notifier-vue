@@ -3,12 +3,19 @@
 @import url('https://fonts.googleapis.com/css?family=Nunito');
 
 // Variables
-@import 'variables';
+// @import 'variables';
 
-// Bootstrap
+// // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// vuefit
+
+@import "~vuetify/dist/vuetify.min.css";
 
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+a:hover{
+	text-decoration: none;
 }
